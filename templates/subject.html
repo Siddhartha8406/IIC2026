@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ display_name if display_name else "NCC Training Suite" }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body>
+
+    <div id="google_translate_element" style="display:none;"></div>
+
+    <div class="main-panel">
+        <div class="panel-header">
+            <div class="header-title-group">
+                <h3>{{ display_name if display_name else "NCC Subject Assistant" }}</h3>
+                <span class="sub-badge" id="currentFileBadge">
+                    {% if filename %} Active Reference: {{ filename }} {% else %} Context Pending Placement {% endif %}
+                </span>
+            </div>
+        </div>
+
+        <div class="upload-utility-bar">
+            <a href="/" style="text-decoration: none;">
+                <button class="btn-upload" style="background: #ffffff; border-color: #d0d7de;">&larr; Dashboard</button>
+            </a>
+            <span id="uploadStatus" style="color: #6e7781;">Operational Matrix Active</span>
+        </div>
+
+        <div class="chat-history" id="chat-history">
+            <div class="ai-msg" id="initial-prompt">
+                <div class="msg-body" style="white-space: pre-wrap;">
+                    <div class="text-line">Subject manuals and training templates deployed. Standing by for immediate instructional drill questions. Ask your question, Cadet.</div>
+                </div>
+            </div>
+            
+            <div class="typing-indicator" id="typingIndicator">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+
+        <div class="input-area">
+            <input type="text" id="questionInput" class="locked-state" placeholder="Awaiting matrix synchronization..." disabled>
+            <button class="transmit-btn locked-state" id="transmitBtn" onclick="askQuestion()" disabled>Send</button>
+        </div>
+    </div>
+
+    <script>
+        let currentUtterance = null;
+        const subjectName = "{{ subject_name }}";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const hasFile = "{{ filename }}".trim().length > 0;
+            if (hasFile && "{{ filename }}" !== "No manual loaded") {
+                unlockUI("System Ready");
+            } else {
+                unlockUI("System Ready (Fallback Mode)");
+            }
+        });
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+
+        async function translateMessage(containerId, langCode) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            const bodyTextNode = container.querySelector('.msg-body');
+            
+            if (!container.getAttribute('data-english-audio-text')) {
+                container.setAttribute('data-english-audio-text', bodyTextNode.innerText);
+            }
+
+            if (langCode === 'en') {
+                if (bodyTextNode.getAttribute('data-original-html')) {
+                    bodyTextNode.innerHTML = bodyTextNode.getAttribute('data-original-html');
+                }
+                return;
+            }
+
+            if (!bodyTextNode.getAttribute('data-original-html')) {
+                bodyTextNode.setAttribute('data-original-html', bodyTextNode.innerHTML);
+            }
+
+            const textNodesToTranslate = [];
+            const walkDOM = (node) => {
+                if (node.nodeType === Node.TEXT_NODE && node.nodeValue.trim().length > 0) {
+                    textNodesToTranslate.push(node);
+                } else {
+                    if (node.classList && node.classList.contains('bullet-marker')) return;
+                    for (let child of node.childNodes) walkDOM(child);
+                }
+            };
+            
+            walkDOM(bodyTextNode);
+
+            for (let node of textNodesToTranslate) {
+                const rawText = node.nodeValue.trim();
+                const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${langCode}&dt=t&q=${encodeURIComponent(rawText)}`;
+
+                try {
+                    const res = await fetch(url);
+                    const result = await res.json();
+                    if (result && result[0]) {
+                        let translatedText = result[0].map(part => part[0]).join('');
+                        node.nodeValue = node.nodeValue.replace(rawText, translatedText);
+                    }
+                } catch (err) {
+                    console.error("Translation fail: ", err);
+                }
+            }
+        }
+
+        function parseMarkdown(text) {
+            if (!text) return "";
+            
+            let html = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            
+            html = html.replace(/^[\s]*[\*|-]{3,}[\s]*$/gm, '<hr class="section-divider">');
+            html = html.replace(/^[\s]*###[\s]+(.*)$/gm, '<h3>$1</h3>');
+            html = html.replace(/^[\s]*##[\s]+(.*)$/gm, '<h2>$1</h2>');
+            
+            html = html.replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>');
+            html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/\*(.*?)\*/g, '<strong>$1</strong>'); 
+            
+            html = html.replace(/\b(First|Second|Third|Fourth|Fifth|One|Two|Three|Question|Note)\b/gi, '<strong>$1</strong>');
+
+            html = html.split('\n').map(line => {
+                let trimmed = line.trim();
+                if (!trimmed) return '<div style="height: 12px;"></div>';
+                
+                if (trimmed.startsWith('<h3') || trimmed.startsWith('<h2') || trimmed.startsWith('<hr')) return line;
+                
+                if (trimmed.startsWith('* ')) {
+                    return `<div class="bullet-item" style="margin-left: 20px; margin-bottom: 6px;"><span class="bullet-marker" style="margin-right: 8px; color: #0969da;">•</span><span class="bullet-text">${trimmed.substring(2)}</span></div>`;
+                }
+                
+                if (trimmed.includes('<strong>One</strong>') || trimmed.includes('<strong>Two</strong>') || trimmed.includes('<strong>Three</strong>')) {
+                    return `<div class="text-line" style="margin-left: 20px; margin-bottom: 6px; line-height: 1.6;">${trimmed}</div>`;
+                }
+                
+                return `<div class="text-line" style="margin-bottom: 6px; line-height: 1.6;">${trimmed}</div>`;
+            }).join('');
+            
+            return html;
+        }
+
+        function unlockUI(statusText) {
+            const statusLabel = document.getElementById('uploadStatus');
+            const questionInput = document.getElementById('questionInput');
+            const transmitBtn = document.getElementById('transmitBtn');
+
+            if(statusLabel) {
+                statusLabel.style.color = "#2da44e"; 
+                statusLabel.innerText = statusText;
+            }
+
+            questionInput.classList.remove('locked-state');
+            questionInput.removeAttribute('disabled');
+            questionInput.placeholder = "Query training variables for this track...";
+            transmitBtn.classList.remove('locked-state');
+            transmitBtn.removeAttribute('disabled');
+        }
+
+        async function askQuestion() {
+            const input = document.getElementById('questionInput');
+            const history = document.getElementById('chat-history');
+            const indicator = document.getElementById('typingIndicator');
+            const query = input.value.trim();
+            
+            if (!query) return;
+
+            const cleanUserQuery = query.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            indicator.insertAdjacentHTML('beforebegin', `<div class="user-msg">${cleanUserQuery}</div>`);
+            input.value = "";
+            indicator.style.display = "block";
+            history.scrollTop = history.scrollHeight;
+
+            const formData = new FormData();
+            formData.append("question", query);
+
+            try {
+                const res = await fetch(`/subject/${subjectName}/ask`, { method: 'POST', body: formData });
+                const data = await res.json();
+
+                indicator.style.display = "none";
+                const responseId = 'ai-msg-' + Date.now();
+                const formattedAiResponse = parseMarkdown(data.response);
+                
+                const aiMessageHtml = `
+                    <div class="ai-msg" id="${responseId}">
+                        <div class="msg-controls">
+                            <select class="translate-dropdown" onchange="translateMessage('${responseId}', this.value)">
+                                <option value="en">Translate (EN)</option>
+                                <option value="hi">Hindi (हिन्दी)</option>
+                                <option value="kn">Kannada (ಕನ್ನಡ)</option>
+                                <option value="te">Telugu (ತೆಲುಗು)</option>
+                                <option value="ta">Tamil (தமிழ்)</option>
+                            </select>
+                            <button class="audio-btn" onclick="toggleSpeech('${responseId}')">🔊 Listen</button>
+                        </div>
+                        <div class="msg-body" style="white-space: pre-wrap;">${formattedAiResponse}</div>
+                    </div>
+                `;
+                indicator.insertAdjacentHTML('beforebegin', aiMessageHtml);
+                document.getElementById(responseId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } catch (err) {
+                indicator.style.display = "none";
+            }
+        }
+
+        function toggleSpeech(containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            let textContent = container.getAttribute('data-english-audio-text') || container.querySelector('.msg-body').innerText;
+            const button = container.querySelector('.audio-btn');
+
+            if (window.speechSynthesis.speaking && currentUtterance && currentUtterance.targetId === containerId) {
+                window.speechSynthesis.cancel();
+                if (button) button.innerText = "🔊 Listen";
+                return;
+            }
+            window.speechSynthesis.cancel();
+            currentUtterance = new SpeechSynthesisUtterance(textContent);
+            currentUtterance.targetId = containerId;
+            currentUtterance.onend = () => { if (button) button.innerText = "🔊 Listen"; };
+            if (button) button.innerText = "🛑 Stop";
+            window.speechSynthesis.speak(currentUtterance);
+        }
+    </script>
+</body>
+</html>

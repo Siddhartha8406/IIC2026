@@ -16,35 +16,72 @@
         </div>
 
         <div class="chat-history" style="gap: 16px; padding: 24px;">
-            <h4 style="font-size: 13px; text-transform: uppercase; color: #57606a; letter-spacing: 0.5px; margin-bottom: 8px;">Available Chat Systems</h4>
+            <h4 style="font-size: 13px; text-transform: uppercase; color: #57606a; letter-spacing: 0.5px; margin-bottom: 4px;">Dynamic Ingest System</h4>
             
-            <!-- Custom Reference PDF System Link (Built Previously) -->
+            <!-- Custom Reference PDF System Link -->
             <a href="/custom" style="text-decoration: none; display: block;">
-                <div class="ai-msg" style="width: 100%; max-width: 100%; cursor: pointer; border-left: 4px solid #0969da; margin: 0;">
+                <div class="ai-msg" style="width: 100%; max-width: 100%; cursor: pointer; border-left: 4px solid #2da44e; margin: 0;">
                     <div class="msg-body" style="display: flex; justify-content: space-between; align-items: center;">
                         <div>
-                            <div style="font-weight: 600; color: #24292f; font-size: 14px;">Custom Notes Assistant</div>
+                            <div style="font-weight: 600; color: #24292f; font-size: 14px;">Custom Notes Workspace</div>
                             <div style="font-size: 12px; color: #57606a; margin-top: 4px;">
-                                {% if custom_file %}
-                                Active File: <strong>{{ custom_file }}</strong>
-                                {% else %}
-                                Status: Awaiting PDF note upload
-                                {% endif %}
+                                {% if custom_file %} Active File: <strong>{{ custom_file }}</strong> {% else %} Status: Awaiting PDF file upload {% endif %}
                             </div>
                         </div>
-                        <span style="font-size: 12px; color: #0969da; font-weight: 600;">Launch Terminal &rarr;</span>
+                        <span style="font-size: 12px; color: #2da44e; font-weight: 600;">Launch Core &rarr;</span>
                     </div>
                 </div>
             </a>
 
-            <!-- Subject-Wise Slots (Placeholder for future drop-ins) -->
-            <div class="ai-msg" style="width: 100%; max-width: 100%; opacity: 0.6; border-left: 4px solid #8c959f; margin: 0;">
+            <h4 style="font-size: 13px; text-transform: uppercase; color: #57606a; letter-spacing: 0.5px; margin-top: 12px; margin-bottom: 4px;">Specialized Subject Suites</h4>
+
+            <!-- Health & Hygiene Dedicated Portal Link -->
+            {% if subjects.health_hygiene %}
+            <a href="/subject/health_hygiene" style="text-decoration: none; display: block;">
+                <div class="ai-msg" style="width: 100%; max-width: 100%; cursor: pointer; border-left: 4px solid #bf4f96; margin: 0;">
+                    <div class="msg-body" style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div style="font-weight: 600; color: #24292f; font-size: 14px;">Health & Hygiene (H&H)</div>
+                            <div style="font-size: 12px; color: #57606a; margin-top: 4px;">Verified Context: <strong>{{ subjects.health_hygiene }}</strong></div>
+                        </div>
+                        <span style="font-size: 12px; color: #bf4f96; font-weight: 600;">Enter Room &rarr;</span>
+                    </div>
+                </div>
+            </a>
+            {% else %}
+            <div class="ai-msg" style="width: 100%; max-width: 100%; opacity: 0.5; border-left: 4px solid #8c959f; margin: 0;">
                 <div class="msg-body">
-                    <div style="font-weight: 600; color: #24292f; font-size: 14px;">Institutional / Specialized Subjects</div>
-                    <div style="font-size: 11px; color: #57606a; margin-top: 4px;">Locked: Standard Syllabus Chapters (Coming Soon)</div>
+                    <div style="font-weight: 600; color: #24292f; font-size: 14px;">Health & Hygiene (H&H)</div>
+                    <div style="font-size: 11px; color: #cf222e; margin-top: 4px;">Offline: Drop reference manual into subjects/health_hygiene/</div>
                 </div>
             </div>
+            {% endif %}
 
+            <!-- Dynamic pre-loaded subjects maps -->
+            {% for sub_id, manual in subjects.items() %}
+            {% if sub_id != "health_hygiene" %}
+                {% if manual %}
+                <a href="/subject/{{ sub_id }}" style="text-decoration: none; display: block;">
+                    <div class="ai-msg" style="width: 100%; max-width: 100%; cursor: pointer; border-left: 4px solid #0969da; margin: 0;">
+                        <div class="msg-body" style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <div style="font-weight: 600; color: #24292f; font-size: 14px; text-transform: capitalize;">{{ sub_id }} Wing Syllabus</div>
+                                <div style="font-size: 12px; color: #57606a; margin-top: 4px;">Verified Context: <strong>{{ manual }}</strong></div>
+                            </div>
+                            <span style="font-size: 12px; color: #0969da; font-weight: 600;">Enter Room &rarr;</span>
+                        </div>
+                    </div>
+                </a>
+                {% else %}
+                <div class="ai-msg" style="width: 100%; max-width: 100%; opacity: 0.5; border-left: 4px solid #8c959f; margin: 0;">
+                    <div class="msg-body">
+                        <div style="font-weight: 600; color: #24292f; font-size: 14px; text-transform: capitalize;">{{ sub_id }} Wing Syllabus</div>
+                        <div style="font-size: 11px; color: #cf222e; margin-top: 4px;">Offline: Drop reference manual into subjects/{{ sub_id }}/</div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endif %}
+            {% endfor %}
         </div>
     </div>
 </body>
