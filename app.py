@@ -2,103 +2,96 @@ import os
 from fastapi import FastAPI, UploadFile, File, Form, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 from PyPDF2 import PdfReader
 from google import genai
 
 app = FastAPI()
-from fastapi.staticfiles import StaticFiles  # Add this import at the top
 
-app = FastAPI()
-
-# ADD THIS LINE: Mount the static directory
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-client = genai.Client()
+api_key = "AQ.Ab8RN6LUhuuqC0ZNcFOOLrEBtNDiPcxkPkhygCxoiV3dvpdmoA"
+client = genai.Client(api_key=api_key)
+
+# Global memory state preserved specifically for the Custom Chat workflow
 extracted_text = ""
+uploaded_filename = ""
 
 @app.get("/", response_class=HTMLResponse)
-async def read_item(request: Request):
-    return templates.TemplateResponse(request=request, name="index.html")
+async def dashboard(request: Request):
+    """Default master landing page containing available chat options."""
+    global uploaded_filename
+    return templates.TemplateResponse(
+        request, 
+        name="dashboard.html",
+        context={"custom_file": uploaded_filename}
+    )
+
+@app.get("/custom", response_class=HTMLResponse)
+async def custom_chat(request: Request):
+    """Routes directly to our previously built feature-complete workspace."""
+    global uploaded_filename
+    return templates.TemplateResponse(
+        request, 
+        name="custom.html",
+        context={"filename": uploaded_filename}
+    )
 
 @app.post("/upload")
 async def upload_pdf(file: UploadFile = File(...)):
-    global extracted_text
+    global extracted_text, uploaded_filename
     try:
         pdf_reader = PdfReader(file.file)
         text = ""
         for page in pdf_reader.pages:
             text += page.extract_text() or ""
-        
         extracted_text = text
-        return {"message": "Fall in! Training manual loaded successfully, Cadet!"}
+        uploaded_filename = file.filename
+        return {"message": "Manual analyzed successfully. Standing by for cadet transmissions."}
     except Exception as e:
-        return {"error": f"Failed to process manual: {str(e)}"}
+        return {"error": f"Failed to parse military manual: {str(e)}"}
 
 @app.post("/ask")
-async def ask_teacher(question: str = Form(...), mode: str = Form(...)):
+async def ask_instructor(question: str = Form(...), mode: str = Form("teaching")):
     global extracted_text
     if not extracted_text:
-        return {"response": "Cadet, upload your training manual first! That's an order!"}
+        return {"response": "No training material loaded. Please deploy your NCC notes first, Cadet."}
 
-    mode_instructions = {
-        "commanding": "Be brief, direct, and use sharp tactical bullet points. No fluff.",
-        "academy": "Provide deep academic context, precise definitions, and official NCC guidelines.",
-        "camp": "Explain using real-world field analogies, outdoor training scenarios, or leadership stories."
+    mode_guidelines = {
+        "teaching": (
+            "Educational and instructional style. Provide crisp board definitions, precise terminology, "
+            "and structured manual alignments. Clear, authoritative, perfectly ordered, and optimized "
+            "for teaching foundational concepts clearly."
+        )
     }
-
-    selected_instruction = mode_instructions.get(mode, mode_instructions["commanding"])
+    
+    selected_guideline = mode_guidelines.get(mode, mode_guidelines["teaching"])
 
     prompt = f"""
-    You are a highly disciplined, proud, and deeply encouraging NCC (National Cadet Corps) Training Instructor.
-    Address the user as 'Cadet'. Use clear military/NCC terminology naturally.
-    Your task is to answer the Cadet's question based strictly on the source text provided below.
-
-    Specific Mode Instruction for this response:
-    {selected_instruction}
-
-    Source Text:
-    {extracted_text[:10000]}
+    ROLE & IDENTITY:
+    You are a real, highly disciplined Associate NCC Officer (ANO) conducting a face-to-face oral briefing with a cadet. 
+    Address the user directly as 'Cadet'. You are NOT an AI assistant or a chatbot—never use robotic transition phrases like "Based on the manual", "According to the text", "As requested", or introductory pleasantries. 
     
-    Cadet's Question: {question}
-    """
+    DELIVERY ARCHITECTURE:
+    - Go directly to the core answer in the first syllable. 
+    - Keep sentences short, crisp, and conversational yet authoritative so it sounds completely natural and easy to understand when spoken aloud via Text-to-Speech.
+    - Break information down cleanly. Avoid long paragraphs or blocks of text.
+    
+    STRATEGIC DIRECTIVE MODE:
+    {selected_guideline}
 
+    CONTEXTUAL GROUND TRUTH:
+    {extracted_text[:12000]}
+    
+    CADET TRANSMISSION: {question}
+    """
+    
     try:
         response = client.models.generate_content(
             model='gemini-2.5-flash',
             contents=prompt,
         )
-        return {"response": response.text}
+        return {"response": response.text.strip()}
     except Exception as e:
-        return {"response": f"Error on the parade ground: {str(e)}"}
-
-@app.post("/quiz")
-async def generate_quiz():
-    global extracted_text
-    if not extracted_text:
-        return {"response": "Upload a manual first before demanding a test, Cadet!"}
-
-    prompt = f"""
-    You are an NCC Instructor. Generate exactly one multiple-choice question (MCQ) based on the source text below to test the cadet's knowledge.
-    Format your response EXACTLY like this layout so the application can render it neatly:
-    
-    **QUESTION:** [Write the question here]
-    A) [Option A]
-    B) [Option B]
-    C) [Option C]
-    D) [Option D]
-    **CORRECT_ANSWER:** [Write only the correct option letter, e.g., A or B or C or D]
-    **EXPLANATION:** [Brief military explanation of why it is right]
-
-    Source Text:
-    {extracted_text[:10000]}
-    """
-
-    try:
-        response = client.models.generate_content(
-            model='gemini-2.5-flash',
-            contents=prompt,
-        )
-        return {"quiz_text": response.text}
-    except Exception as e:
-        return {"error": str(e)}
+        return {"response": f"Communication link error: {str(e)}"}

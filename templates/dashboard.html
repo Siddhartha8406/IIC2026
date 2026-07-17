@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadet Command Deck</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="main-panel">
+        <div class="panel-header">
+            <div class="header-title-group">
+                <h3>NCC LMS Dashboard</h3>
+                <span class="sub-badge">Command Deck Terminal</span>
+            </div>
+        </div>
+
+        <div class="chat-history" style="gap: 16px; padding: 24px;">
+            <h4 style="font-size: 13px; text-transform: uppercase; color: #57606a; letter-spacing: 0.5px; margin-bottom: 8px;">Available Chat Systems</h4>
+            
+            <!-- Custom Reference PDF System Link (Built Previously) -->
+            <a href="/custom" style="text-decoration: none; display: block;">
+                <div class="ai-msg" style="width: 100%; max-width: 100%; cursor: pointer; border-left: 4px solid #0969da; margin: 0;">
+                    <div class="msg-body" style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div style="font-weight: 600; color: #24292f; font-size: 14px;">Custom Notes Assistant</div>
+                            <div style="font-size: 12px; color: #57606a; margin-top: 4px;">
+                                {% if custom_file %}
+                                Active File: <strong>{{ custom_file }}</strong>
+                                {% else %}
+                                Status: Awaiting PDF note upload
+                                {% endif %}
+                            </div>
+                        </div>
+                        <span style="font-size: 12px; color: #0969da; font-weight: 600;">Launch Terminal &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Subject-Wise Slots (Placeholder for future drop-ins) -->
+            <div class="ai-msg" style="width: 100%; max-width: 100%; opacity: 0.6; border-left: 4px solid #8c959f; margin: 0;">
+                <div class="msg-body">
+                    <div style="font-weight: 600; color: #24292f; font-size: 14px;">Institutional / Specialized Subjects</div>
+                    <div style="font-size: 11px; color: #57606a; margin-top: 4px;">Locked: Standard Syllabus Chapters (Coming Soon)</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
