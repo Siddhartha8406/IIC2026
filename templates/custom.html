@@ -39,7 +39,7 @@
         <!-- Chat History Viewport -->
         <div class="chat-history" id="chat-history">
             <div class="ai-msg" id="initial-prompt">
-                <div class="msg-body">
+                <div class="msg-body" style="white-space: pre-wrap;">
                     <div class="text-line">Welcome. Load your reference manual context via the tool strip above. Once processed, the interface parameters will align automatically.</div>
                 </div>
             </div>
@@ -135,17 +135,29 @@
             html = html.replace(/^[\s]*[\*|-]{3,}[\s]*$/gm, '<hr class="section-divider">');
             html = html.replace(/^[\s]*###[\s]+(.*)$/gm, '<h3>$1</h3>');
             html = html.replace(/^[\s]*##[\s]+(.*)$/gm, '<h2>$1</h2>');
+            
+            html = html.replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>');
             html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/\*(.*?)\*/g, '<strong>$1</strong>');
+            
+            html = html.replace(/\b(First|Second|Third|Fourth|Fifth|One|Two|Three|Question|Note)\b/gi, '<strong>$1</strong>');
 
             html = html.split('\n')
-                .map(line => line.trim())
-                .filter(line => line.length > 0) 
                 .map(line => {
-                    if (line.startsWith('<h3') || line.startsWith('<h2') || line.startsWith('<hr')) return line;
-                    if (line.startsWith('* ')) {
-                        return `<div class="bullet-item"><span class="bullet-marker">•</span><span class="bullet-text">${line.substring(2)}</span></div>`;
+                    let trimmed = line.trim();
+                    if (!trimmed) return '<div style="height: 12px;"></div>';
+                    
+                    if (trimmed.startsWith('<h3') || trimmed.startsWith('<h2') || trimmed.startsWith('<hr')) return line;
+                    
+                    if (trimmed.startsWith('* ')) {
+                        return `<div class="bullet-item" style="margin-left: 20px; margin-bottom: 6px;"><span class="bullet-marker" style="margin-right: 8px; color: #0969da;">•</span><span class="bullet-text">${trimmed.substring(2)}</span></div>`;
                     }
-                    return `<div class="text-line">${line}</div>`;
+                    
+                    if (trimmed.includes('<strong>One</strong>') || trimmed.includes('<strong>Two</strong>') || trimmed.includes('<strong>Three</strong>')) {
+                        return `<div class="text-line" style="margin-left: 20px; margin-bottom: 6px; line-height: 1.6;">${trimmed}</div>`;
+                    }
+                    
+                    return `<div class="text-line" style="margin-bottom: 6px; line-height: 1.6;">${trimmed}</div>`;
                 }).join('');
 
             return html;
@@ -227,7 +239,7 @@
 
             const formData = new FormData();
             formData.append("question", query);
-            formData.append("mode", "teaching"); // Default set to teaching mode directly
+            formData.append("mode", "teaching"); 
 
             try {
                 const res = await fetch('/ask', { method: 'POST', body: formData });
@@ -249,7 +261,7 @@
                             </select>
                             <button class="audio-btn" onclick="toggleSpeech('${responseId}')">🔊 Listen</button>
                         </div>
-                        <div class="msg-body">${formattedAiResponse}</div>
+                        <div class="msg-body" style="white-space: pre-wrap;">${formattedAiResponse}</div>
                     </div>
                 `;
                 
