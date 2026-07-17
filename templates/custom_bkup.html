@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadet Learning Management System</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body>
+
+    <div id="google_translate_element" style="display:none;"></div>
+
+    <div class="main-panel">
+        <!-- Top Title Header -->
+        <div class="panel-header">
+            <div class="header-title-group">
+                <h3>NCC Training Assistant</h3>
+                <span class="sub-badge">LMS Engine v1.0</span>
+            </div>
+            
+            <!-- Strategic Directive Mode Switcher -->
+            <div class="mode-selector-container">
+                <label for="instructionMode">Directive Mode:</label>
+                <select id="instructionMode" class="mode-dropdown">
+                    <option value="commanding">Commanding (Brief/Tactical)</option>
+                    <option value="academy">Academy (Institutional/Board)</option>
+                    <option value="camp">Camp (Field Logic/Analogies)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Separated Top Upload Strip -->
+        <div class="upload-utility-bar">
+            <div class="upload-btn-wrapper">
+                <button class="btn-upload" id="uploadLabel">Choose PDF File</button>
+                <input type="file" id="pdfFile" accept=".pdf" onchange="uploadPDF()">
+            </div>
+            <span id="uploadStatus" style="color: #6e7781;">Step 1: Ingest notes handbook</span>
+        </div>
+
+        <!-- Chat History Viewport -->
+        <div class="chat-history" id="chat-history">
+            <div class="ai-msg" id="initial-prompt">
+                <div class="msg-body">
+                    <div class="text-line">Welcome. To begin, please use the top tool strip to select and load your target reference PDF notes. Once processed, the bottom messaging bar will unlock.</div>
+                </div>
+            </div>
+            
+            <!-- Safe, Persistent Loader Anchor Placement -->
+            <div class="typing-indicator" id="typingIndicator">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+
+        <!-- Bottom Chat Input Bar -->
+        <div class="input-area">
+            <input type="text" id="questionInput" class="locked-state" placeholder="Awaiting file upload above..." disabled>
+            <button class="transmit-btn locked-state" id="transmitBtn" onclick="askQuestion()" disabled>Send</button>
+        </div>
+    </div>
+
+    <script>
+        let currentUtterance = null;
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+
+        // Deep-walk translator that caches English data and alters display elements only
+        async function translateMessage(containerId, langCode) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            const bodyTextNode = container.querySelector('.msg-body');
+            
+            // Cache a pristine plain-text layout copy for the voice broadcast stack before any alterations
+            if (!container.getAttribute('data-english-audio-text')) {
+                container.setAttribute('data-english-audio-text', bodyTextNode.innerText);
+            }
+
+            // If returning to English baseline, restore original HTML tree directly
+            if (langCode === 'en') {
+                if (bodyTextNode.getAttribute('data-original-html')) {
+                    bodyTextNode.innerHTML = bodyTextNode.getAttribute('data-original-html');
+                }
+                return;
+            }
+
+            if (!bodyTextNode.getAttribute('data-original-html')) {
+                bodyTextNode.setAttribute('data-original-html', bodyTextNode.innerHTML);
+            }
+
+            const textNodesToTranslate = [];
+            const walkDOM = (node) => {
+                if (node.nodeType === Node.TEXT_NODE && node.nodeValue.trim().length > 0) {
+                    textNodesToTranslate.push(node);
+                } else {
+                    if (node.classList && node.classList.contains('bullet-marker')) return;
+                    for (let child of node.childNodes) {
+                        walkDOM(child);
+                    }
+                }
+            };
+            
+            walkDOM(bodyTextNode);
+
+            for (let node of textNodesToTranslate) {
+                const rawText = node.nodeValue.trim();
+                const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${langCode}&dt=t&q=${encodeURIComponent(rawText)}`;
+
+                try {
+                    const res = await fetch(url);
+                    const result = await res.json();
+                    if (result && result[0]) {
+                        let translatedText = result[0].map(part => part[0]).join('');
+                        node.nodeValue = node.nodeValue.replace(rawText, translatedText);
+                    }
+                } catch (err) {
+                    console.error("Node translation failed: ", err);
+                }
+            }
+        }
+
+        function parseMarkdown(text) {
+            if (!text) return "";
+            
+            let html = text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+            html = html.replace(/^[\s]*[\*|-]{3,}[\s]*$/gm, '<hr class="section-divider">');
+            html = html.replace(/^[\s]*###[\s]+(.*)$/gm, '<h3>$1</h3>');
+            html = html.replace(/^[\s]*##[\s]+(.*)$/gm, '<h2>$1</h2>');
+            html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+            html = html.split('\n')
+                .map(line => line.trim())
+                .filter(line => line.length > 0) 
+                .map(line => {
+                    if (line.startsWith('<h3') || line.startsWith('<h2') || line.startsWith('<hr')) {
+                        return line;
+                    }
+                    if (line.startsWith('* ')) {
+                        return `<div class="bullet-item"><span class="bullet-marker">•</span><span class="bullet-text">${line.substring(2)}</span></div>`;
+                    }
+                    return `<div class="text-line">${line}</div>`;
+                }).join('');
+
+            return html;
+        }
+
+        async function uploadPDF() {
+            const fileInput = document.getElementById('pdfFile');
+            const statusLabel = document.getElementById('uploadStatus');
+            const uploadLabel = document.getElementById('uploadLabel');
+            const questionInput = document.getElementById('questionInput');
+            const transmitBtn = document.getElementById('transmitBtn');
+            const initialPrompt = document.getElementById('initial-prompt');
+            
+            if (!fileInput.files[0]) return;
+
+            uploadLabel.innerText = "Processing...";
+            statusLabel.style.color = "#0969da"; 
+            statusLabel.innerText = "Analyzing content structure...";
+            
+            questionInput.classList.add('locked-state');
+            questionInput.setAttribute('disabled', 'true');
+            questionInput.placeholder = "Processing document context...";
+            transmitBtn.classList.add('locked-state');
+            transmitBtn.setAttribute('disabled', 'true');
+
+            const formData = new FormData();
+            formData.append("file", fileInput.files[0]);
+
+            try {
+                const res = await fetch('/upload', { method: 'POST', body: formData });
+                const data = await res.json();
+                
+                if (data.message) { 
+                    statusLabel.style.color = "#2da44e"; 
+                    statusLabel.innerText = "Assistant Active"; 
+                    uploadLabel.innerText = "Document Loaded";
+
+                    questionInput.classList.remove('locked-state');
+                    questionInput.removeAttribute('disabled');
+                    questionInput.placeholder = "Ask a question about the notes...";
+                    
+                    transmitBtn.classList.remove('locked-state');
+                    transmitBtn.removeAttribute('disabled');
+
+                    if (initialPrompt) {
+                        const bodyNode = initialPrompt.querySelector('.msg-body');
+                        if (bodyNode) {
+                            bodyNode.innerHTML = `<div class="text-line">Document analysis complete. You can now type your queries in the field below. Responses will be calculated directly from your notes context.</div>`;
+                        }
+                    }
+                } else { 
+                    statusLabel.style.color = "#cf222e"; 
+                    statusLabel.innerText = "Upload failed"; 
+                    uploadLabel.innerText = "Retry Upload";
+                    questionInput.placeholder = "Awaiting file upload above...";
+                }
+            } catch (err) {
+                statusLabel.style.color = "#cf222e";
+                statusLabel.innerText = "Connection error";
+                uploadLabel.innerText = "Error";
+                questionInput.placeholder = "Awaiting file upload above...";
+            }
+        }
+
+        async function askQuestion() {
+            const input = document.getElementById('questionInput');
+            const history = document.getElementById('chat-history');
+            const indicator = document.getElementById('typingIndicator');
+            const modeSelect = document.getElementById('instructionMode');
+            const query = input.value.trim();
+            
+            if (!query) return;
+
+            const cleanUserQuery = query
+                .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                
+            indicator.insertAdjacentHTML('beforebegin', `<div class="user-msg">${cleanUserQuery}</div>`);
+            input.value = "";
+            
+            indicator.style.display = "block";
+            history.scrollTop = history.scrollHeight;
+
+            const formData = new FormData();
+            formData.append("question", query);
+            formData.append("mode", modeSelect ? modeSelect.value : "commanding");
+
+            try {
+                const res = await fetch('/ask', { method: 'POST', body: formData });
+                const data = await res.json();
+
+                indicator.style.display = "none";
+                
+                const responseId = 'ai-msg-' + Date.now();
+                const formattedAiResponse = parseMarkdown(data.response);
+                
+                const aiMessageHtml = `
+                    <div class="ai-msg" id="${responseId}">
+                        <div class="msg-controls">
+                            <select class="translate-dropdown" onchange="translateMessage('${responseId}', this.value)">
+                                <option value="en">Translate (EN)</option>
+                                <option value="hi">Hindi (हिन्दी)</option>
+                                <option value="kn">Kannada (ಕನ್ನಡ)</option>
+                                <option value="te">Telugu (ತೆಲುಗು)</option>
+                                <option value="ta">Tamil (தமிழ்)</option>
+                            </select>
+                            <button class="audio-btn" onclick="toggleSpeech('${responseId}')" title="Listen to Transmission">🔊 Listen</button>
+                        </div>
+                        <div class="msg-body">${formattedAiResponse}</div>
+                    </div>
+                `;
+                
+                indicator.insertAdjacentHTML('beforebegin', aiMessageHtml);
+                
+                const newResponseNode = document.getElementById(responseId);
+                if (newResponseNode) {
+                    newResponseNode.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+
+            } catch (err) {
+                indicator.style.display = "none";
+                indicator.insertAdjacentHTML('beforebegin', `<div class="ai-msg" style="border-left: 4px solid #cf222e;"><div class="msg-body"><div class="text-line">Error: Failed to fetch response from backend server.</div></div></div>`);
+                history.scrollTop = history.scrollHeight;
+            }
+        }
+
+        // Audio execution loop strictly processing the clean English backup vector
+        function toggleSpeech(containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            
+            // Extract the English data block to ensure translation state changes never bleed into audio commands
+            let textContent = container.getAttribute('data-english-audio-text');
+            if (!textContent) {
+                textContent = container.querySelector('.msg-body').innerText;
+            }
+            
+            const button = container.querySelector('.audio-btn');
+
+            if (window.speechSynthesis.speaking && currentUtterance && currentUtterance.targetId === containerId) {
+                window.speechSynthesis.cancel();
+                if (button) {
+                    button.innerText = "🔊 Listen";
+                    button.classList.remove('speaking');
+                }
+                return;
+            }
+
+            window.speechSynthesis.cancel();
+            
+            document.querySelectorAll('.audio-btn').forEach(btn => {
+                btn.innerText = "🔊 Listen";
+                btn.classList.remove('speaking');
+            });
+
+            currentUtterance = new SpeechSynthesisUtterance(textContent);
+            currentUtterance.targetId = containerId;
+            
+            currentUtterance.rate = 1.0;  
+            currentUtterance.pitch = 0.95; 
+
+            currentUtterance.onend = () => {
+                if (button) {
+                    button.innerText = "🔊 Listen";
+                    button.classList.remove('speaking');
+                }
+            };
+
+            if (button) {
+                button.innerText = "🛑 Stop";
+                button.classList.add('speaking');
+            }
+            window.speechSynthesis.speak(currentUtterance);
+        }
+
+        document.getElementById('questionInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter' && !this.disabled) {
+                askQuestion();
+            }
+        });
+    </script>
+</body>
+</html>
