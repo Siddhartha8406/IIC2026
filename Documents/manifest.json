@@ -1,0 +1,62 @@
+[
+  {
+    "fileName": "sd_enrollment_forms_2026.pdf",
+    "code": "NCC/ENR/01",
+    "title": "Form I - Senior Division Enrollment Applications",
+    "category": "Enrollment"
+  },
+  {
+    "fileName": "parent_consent_declarations.pdf",
+    "code": "NCC/ENR/02",
+    "title": "Form II - Parent/Guardian Consent & Indemnity Declarations",
+    "category": "Enrollment"
+  },
+  {
+    "fileName": "medical_fitness_master_2026.pdf",
+    "code": "NCC/MED/03",
+    "title": "Form III - Medical Fitness & Blood Group Certification",
+    "category": "Medical"
+  },
+  {
+    "fileName": "catc_ii_nominal_roll_45cdt.xlsx",
+    "code": "NCC/CMP/04",
+    "title": "Combined Annual Training Camp (CATC-II) Nominal Roll",
+    "category": "Camps"
+  },
+  {
+    "fileName": "camp_indemnity_bonds_bundle.pdf",
+    "code": "NCC/CMP/05",
+    "title": "Camp Risk Clearance Indemnity Bonds",
+    "category": "Camps"
+  },
+  {
+    "fileName": "ammo_expended_voucher_2026.pdf",
+    "code": "NCC/RNG/06",
+    "title": "Range Safety Protocol & Ammunition Expended Certificate",
+    "category": "Firing & Armory"
+  },
+  {
+    "fileName": "b_cert_eligibility_roster.pdf",
+    "code": "NCC/EXM/07",
+    "title": "'B' Certificate Examination Eligibility Master List",
+    "category": "Certificates"
+  },
+  {
+    "fileName": "c_cert_nomination_master.pdf",
+    "code": "NCC/EXM/08",
+    "title": "'C' Certificate Exam Nomination & Service Record",
+    "category": "Certificates"
+  },
+  {
+    "fileName": "refreshment_acquittance_aug2026.pdf",
+    "code": "NCC/FIN/09",
+    "title": "Cadet Refreshment Allowance Voucher & Acquittance Roll",
+    "category": "Finance"
+  },
+  {
+    "fileName": "uniform_stores_issue_ledger.pdf",
+    "code": "NCC/STR/10",
+    "title": "Uniform & Equipment Issue Voucher (IV/RV) Register",
+    "category": "Stores"
+  }
+]

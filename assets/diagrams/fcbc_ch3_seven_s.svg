@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" style="background:#0a0f18; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.2"/>
+      <stop offset="50%" stop-color="#3b82f6" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.6"/>
+    </pattern>
+  </defs>
+
+  <!-- Background Grid -->
+  <rect width="1280" height="720" fill="#060b13"/>
+  <rect width="1280" height="720" fill="url(#grid)"/>
+
+  <!-- Border Frame -->
+  <rect x="20" y="20" width="1240" height="680" rx="20" fill="none" stroke="#1e293b" stroke-width="2"/>
+  <rect x="24" y="24" width="1232" height="672" rx="16" fill="none" stroke="#0ea5e9" stroke-width="1" stroke-opacity="0.2"/>
+
+  <!-- Header Banner -->
+  <rect x="24" y="24" width="1232" height="90" rx="16" fill="url(#headerGrad)"/>
+  <text x="50" y="65" fill="#38bdf8" font-size="24" font-weight="900" letter-spacing="2" font-family="'Arial Black', sans-serif">FIELD CRAFT: THE 7 S'S AND MOVEMENT OF BATTLEFIELD VISIBILITY</text>
+  <text x="50" y="95" fill="#94a3b8" font-size="14" font-weight="600" letter-spacing="1">Chapter 3: Eight Visual Contrast Factors That Reveal Concealed Troops</text>
+  <rect x="1100" y="45" width="130" height="32" rx="16" fill="#0f172a" stroke="#0284c7" stroke-width="1.5"/>
+  <text x="1165" y="66" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="1">TACTICAL PLATE</text>
+
+  <!-- Body Content -->
+  
+  <g transform="translate(50, 130)">
+    <!-- 8 Grid Cards for 7 S's + Movement -->
+    <!-- S1: Shape -->
+    <g transform="translate(0, 0)">
+      <rect width="280" height="235" rx="12" fill="#0f172a" stroke="#334155"/>
+      <text x="20" y="35" fill="#f87171" font-size="16" font-weight="bold">1. SHAPE</text>
+      <text x="20" y="65" fill="#cbd5e1" font-size="12">Geometric helmets, packs, and rifle barrels contrast sharply with natural foliage.</text>
+      <text x="20" y="125" fill="#34d399" font-size="12" font-weight="bold">COUNTERMEASURE:</text>
+      <text x="20" y="150" fill="#94a3b8" font-size="11">Break geometric outlines with helmet netting and vegetation.</text>
+    </g>
+
+    <!-- S2: Shadow -->
+    <g transform="translate(305, 0)">
+      <rect width="280" height="235" rx="12" fill="#0f172a" stroke="#334155"/>
+      <text x="20" y="35" fill="#f87171" font-size="16" font-weight="bold">2. SHADOW</text>
+      <text x="20" y="65" fill="#cbd5e1" font-size="12">Shadows cast in bright sunlight reveal troop presence even when soldier is hidden.</text>
+      <text x="20" y="125" fill="#34d399" font-size="12" font-weight="bold">COUNTERMEASURE:</text>
+      <text x="20" y="150" fill="#94a3b8" font-size="11">Stay inside deep natural shadow zones; avoid open sunlight.</text>
+    </g>
+
+    <!-- S3: Shine -->
+    <g transform="translate(610, 0)">
+      <rect width="280" height="235" rx="12" fill="#0f172a" stroke="#334155"/>
+      <text x="20" y="35" fill="#f87171" font-size="16" font-weight="bold">3. SHINE</text>
+      <text x="20" y="65" fill="#cbd5e1" font-size="12">Reflections from watches, glasses, binoculars, or oily skin seen kilometers away.</text>
+      <text x="20" y="125" fill="#34d399" font-size="12" font-weight="bold">COUNTERMEASURE:</text>
+      <text x="20" y="150" fill="#94a3b8" font-size="11">Tape shiny metal gear; apply matte camo paint to skin.</text>
+    </g>
+
+    <!-- S4: Surface -->
+    <g transform="translate(915, 0)">
+      <rect width="280" height="235" rx="12" fill="#0f172a" stroke="#334155"/>
+      <text x="20" y="35" fill="#f87171" font-size="16" font-weight="bold">4. SURFACE</text>
+      <text x="20" y="65" fill="#cbd5e1" font-size="12">Smooth synthetic uniform texture contrasting with rough bark and mud.</text>
+      <text x="20" y="125" fill="#34d399" font-size="12" font-weight="bold">COUNTERMEASURE:</text>
+      <text x="20" y="150" fill="#94a3b8" font-size="11">Blend texture using local mud, grass, and foliage.</text>
+    </g>
+
+    <!-- S5: Spacing -->
+    <g transform="translate(0, 260)">
+      <rect width="280" height="235" rx="12" fill="#0f172a" stroke="#334155"/>
+      <text x="20" y="35" fill="#fbbf24" font-size="16" font-weight="bold">5. SPACING</text>
+      <text x="20" y="65" fill="#cbd5e1" font-size="12">Unnatural, equidistant intervals between soldiers or trenches.</text>
+      <text x="20" y="125" fill="#34d399" font-size="12" font-weight="bold">COUNTERMEASURE:</text>
+      <text x="20" y="150" fill="#94a3b8" font-size="11">Adopt irregular natural tactical spacing (5m–10m intervals).</text>
+    </g>
+
+    <!-- S6: Silhouette -->
+    <g transform="translate(305, 260)">
+      <rect width="280" height="235" rx="12" fill="#0f172a" stroke="#334155"/>
+      <text x="20" y="35" fill="#fbbf24" font-size="16" font-weight="bold">6. SILHOUETTE</text>
+      <text x="20" y="65" fill="#cbd5e1" font-size="12">Standing against the open skyline or pale contrasting backgrounds.</text>
+      <text x="20" y="125" fill="#34d399" font-size="12" font-weight="bold">COUNTERMEASURE:</text>
+      <text x="20" y="150" fill="#94a3b8" font-size="11">Never crest hilltops standing; crawl below skyline contour.</text>
+    </g>
+
+    <!-- S7: Sound & Smoke -->
+    <g transform="translate(610, 260)">
+      <rect width="280" height="235" rx="12" fill="#0f172a" stroke="#334155"/>
+      <text x="20" y="35" fill="#fbbf24" font-size="16" font-weight="bold">7. SOUND &amp; SMOKE</text>
+      <text x="20" y="65" fill="#cbd5e1" font-size="12">Weapon clicks, coughing, mess tins rattling, or cooking smoke plumes.</text>
+      <text x="20" y="125" fill="#34d399" font-size="12" font-weight="bold">COUNTERMEASURE:</text>
+      <text x="20" y="150" fill="#94a3b8" font-size="11">Strict sound discipline; pad metal gear with cloth.</text>
+    </g>
+
+    <!-- M: Movement -->
+    <g transform="translate(915, 260)">
+      <rect width="280" height="235" rx="12" fill="#1e1b4b" stroke="#818cf8" stroke-width="2"/>
+      <text x="20" y="35" fill="#a5b4fc" font-size="16" font-weight="900">8. MOVEMENT (TOP GIVEAWAY)</text>
+      <text x="20" y="65" fill="#e0e7ff" font-size="12">Sudden jerky motion immediately catches the human eye above all else.</text>
+      <text x="20" y="125" fill="#38bdf8" font-size="12" font-weight="bold">COUNTERMEASURE:</text>
+      <text x="20" y="150" fill="#c7d2fe" font-size="11">Freeze instantly if spotted; move slowly and smoothly.</text>
+    </g>
+  </g>
+  
+
+  <!-- Footer -->
+  <line x1="40" y1="675" x2="1240" y2="675" stroke="#1e293b" stroke-width="1"/>
+  <text x="50" y="695" fill="#64748b" font-size="11" font-weight="600" letter-spacing="1">PROJECT PROMETHEUS • NCC ANO TRAINING COMMAND • OFFICIAL INSTRUCTIONAL DOCTRINE</text>
+  <text x="1230" y="695" fill="#64748b" font-size="11" font-weight="600" text-anchor="end" letter-spacing="1">OFFLINE VECTOR ASSET</text>
+</svg>

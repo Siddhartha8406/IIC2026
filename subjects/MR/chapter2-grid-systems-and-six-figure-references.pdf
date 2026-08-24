@@ -1,0 +1,87 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 1435 >>
+stream
+BT
+/F1 11 Tf
+14 TL
+40 760 Td
+/F2 14 Tf (Title: GRID SYSTEMS AND FOUR & SIX FIGURE GRID REFERENCES) Tj
+/F1 10 Tf
+T*
+(National Cadet Corps \(NCC\) — Official Directorate General Training Notes) Tj
+T*
+(--------------------------------------------------------------------------------) Tj
+T*
+() Tj
+T*
+(1. PURPOSE OF MILITARY GRID SYSTEM: The Purple Grid network drawn across) Tj
+T*
+(survey maps enables troops to designate any point on earth accurately) Tj
+T*
+(without relying on complex geographical latitude and longitude coordinates.) Tj
+T*
+() Tj
+T*
+(2. EASTINGS & NORTHINGS: Eastings are the vertical grid lines numbered) Tj
+T*
+(sequentially from West to East \(left to right\). Northings are the) Tj
+T*
+(horizontal grid lines numbered sequentially from South to North \(bottom to) Tj
+T*
+(top\). The fundamental reading rule is: "Along the corridor first) Tj
+T*
+(\(Eastings\), then up the stairs \(Northings\)".) Tj
+T*
+() Tj
+T*
+(3. 4-FIGURE GRID REFERENCE: Identifies a 1 square kilometer grid box.) Tj
+T*
+(Example: Easting line 42 and Northing line 68 yield the 4-figure reference) Tj
+T*
+(GR 4268.) Tj
+T*
+() Tj
+T*
+(4. 6-FIGURE GRID REFERENCE DECOMPOSITION: Divides each 1 km grid square) Tj
+T*
+(into tenths \(100-meter precision\). To locate a bunker at 3 tenths east of) Tj
+T*
+(line 42 and 7 tenths north of line 68, the full 6-figure reference is) Tj
+T*
+(written as GR 423687 \(Easting 42 + 3, Northing 68 + 7\).) Tj
+T*
+() Tj
+T*
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000001738 00000 n 
+0000001808 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+1883
+%%EOF

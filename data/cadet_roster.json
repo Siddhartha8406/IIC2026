@@ -1,0 +1,98 @@
+[
+  {
+    "id": "cdt-101",
+    "regNo": "KA/22/SDA/10401",
+    "name": "Amit Kumar",
+    "rank": "Senior Under Officer",
+    "unit": "1 KAR BN NCC",
+    "status": "Active",
+    "phone": "+91 9876543210",
+    "bloodGroup": "B+",
+    "performance": {
+      "HH": 88,
+      "MR": 92,
+      "FCBC": 84,
+      "GA": 90
+    }
+  },
+  {
+    "id": "cdt-102",
+    "regNo": "KA/22/SWA/10402",
+    "name": "Priya Singh",
+    "rank": "Junior Under Officer",
+    "unit": "1 KAR BN NCC",
+    "status": "Active",
+    "phone": "+91 9876543211",
+    "bloodGroup": "O+",
+    "performance": {
+      "HH": 94,
+      "MR": 86,
+      "FCBC": 90,
+      "GA": 95
+    }
+  },
+  {
+    "id": "cdt-103",
+    "regNo": "KA/23/SDA/10403",
+    "name": "Rahul Verma",
+    "rank": "Company Sergeant Major",
+    "unit": "1 KAR BN NCC",
+    "status": "In Camp",
+    "phone": "+91 9876543212",
+    "bloodGroup": "A+",
+    "performance": {
+      "HH": 78,
+      "MR": 82,
+      "FCBC": 76,
+      "GA": 80
+    }
+  },
+  {
+    "id": "cdt-104",
+    "regNo": "KA/23/SWA/10404",
+    "name": "Sneha Patil",
+    "rank": "Sergeant",
+    "unit": "1 KAR BN NCC",
+    "status": "Active",
+    "phone": "+91 9876543213",
+    "bloodGroup": "AB+",
+    "performance": {
+      "HH": 90,
+      "MR": 75,
+      "FCBC": 82,
+      "GA": 88
+    }
+  },
+  {
+    "id": "cdt-105",
+    "regNo": "KA/24/SDA/10405",
+    "name": "Mohammed Tariq",
+    "rank": "Cadet",
+    "unit": "1 KAR BN NCC",
+    "status": "New Joinee",
+    "phone": "+91 9876543214",
+    "bloodGroup": "O-",
+    "performance": {
+      "HH": 65,
+      "MR": 70,
+      "FCBC": 60,
+      "GA": 72
+    }
+  },
+  {
+    "id": "cdt-106",
+    "regNo": "KA/21/SDA/10406",
+    "name": "Vikram Joshi",
+    "rank": "Cadet",
+    "unit": "1 KAR BN NCC",
+    "status": "Dropout",
+    "phone": "+91 9876543215",
+    "bloodGroup": "B-",
+    "performance": {
+      "HH": 40,
+      "MR": 45,
+      "FCBC": 50,
+      "GA": 42
+    }
+  }
+]

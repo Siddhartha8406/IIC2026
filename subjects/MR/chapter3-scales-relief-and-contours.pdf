@@ -1,0 +1,93 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 1659 >>
+stream
+BT
+/F1 11 Tf
+14 TL
+40 760 Td
+/F2 14 Tf (Title: SCALES, RELIEF, AND CONTOURS) Tj
+/F1 10 Tf
+T*
+(National Cadet Corps \(NCC\) — Official Directorate General Training Notes) Tj
+T*
+(--------------------------------------------------------------------------------) Tj
+T*
+() Tj
+T*
+(1. DEFINITION OF SCALE & REPRESENTATIVE FRACTION \(RF\): Scale expresses the) Tj
+T*
+(fixed mathematical ratio between a distance measured on the map and the) Tj
+T*
+(corresponding distance on the ground. RF 1:50,000 means 1 unit on the map) Tj
+T*
+(equals 50,000 identical units on the terrain.) Tj
+T*
+() Tj
+T*
+(2. RELIEF & CONTOUR LINES: Relief represents the three-dimensional) Tj
+T*
+(elevation variations of the earth's surface. Contours are brown lines) Tj
+T*
+(connecting points of equal height above Mean Sea Level \(MSL\). The vertical) Tj
+T*
+(distance between adjacent contour lines is termed the Vertical Interval) Tj
+T*
+(\(VI\), standardly 20 meters.) Tj
+T*
+() Tj
+T*
+(3. TERRAIN FEATURE IDENTIFICATION: Contour lines positioned close together) Tj
+T*
+(indicate a steep slope or cliff face. Contour lines widely spaced signify a) Tj
+T*
+(gentle, flat plain. Concentric circular contours with height numbers) Tj
+T*
+(increasing toward the center indicate a Hill Peak, while concentric) Tj
+T*
+(contours with numbers decreasing inward denote a Crater or Basin.) Tj
+T*
+() Tj
+T*
+(4. SPURS, VALLEYS, AND SADDLES: A V-shaped contour pointing down towards) Tj
+T*
+(lower elevation represents a Spur \(ridge\). A V-shaped contour pointing up) Tj
+T*
+(towards higher elevation represents a Valley or Re-entrant. A dip between) Tj
+T*
+(two adjacent peaks is a Saddle or Col.) Tj
+T*
+() Tj
+T*
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000001962 00000 n 
+0000002032 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+2107
+%%EOF

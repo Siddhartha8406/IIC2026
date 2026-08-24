@@ -1,0 +1,7 @@
+ID,Regimental_Number,Cadet_Name,Rank,Unit,Status,Phone,Blood_Group,Health_Hygiene_Score,Map_Reading_Score,Field_Craft_Score,Armed_Forces_Score
+"cdt-101","KA/22/SDA/10401","Amit Kumar","Senior Under Officer","1 KAR BN NCC","Active","+91 9876543210","B+",88,92,84,90
+"cdt-102","KA/22/SWA/10402","Priya Singh","Junior Under Officer","1 KAR BN NCC","Active","+91 9876543211","O+",94,86,90,95
+"cdt-103","KA/23/SDA/10403","Rahul Verma","Company Sergeant Major","1 KAR BN NCC","In Camp","+91 9876543212","A+",78,82,76,80
+"cdt-104","KA/23/SWA/10404","Sneha Patil","Sergeant","1 KAR BN NCC","Active","+91 9876543213","AB+",90,75,82,88
+"cdt-105","KA/24/SDA/10405","Mohammed Tariq","Cadet","1 KAR BN NCC","New Joinee","+91 9876543214","O-",65,70,60,72
+"cdt-106","KA/21/SDA/10406","Vikram Joshi","Cadet","1 KAR BN NCC","Dropout","+91 9876543215","B-",40,45,50,42

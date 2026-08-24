@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" style="background:#0a0f18; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.2"/>
+      <stop offset="50%" stop-color="#3b82f6" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.6"/>
+    </pattern>
+  </defs>
+
+  <!-- Background Grid -->
+  <rect width="1280" height="720" fill="#060b13"/>
+  <rect width="1280" height="720" fill="url(#grid)"/>
+
+  <!-- Border Frame -->
+  <rect x="20" y="20" width="1240" height="680" rx="20" fill="none" stroke="#1e293b" stroke-width="2"/>
+  <rect x="24" y="24" width="1232" height="672" rx="16" fill="none" stroke="#0ea5e9" stroke-width="1" stroke-opacity="0.2"/>
+
+  <!-- Header Banner -->
+  <rect x="24" y="24" width="1232" height="90" rx="16" fill="url(#headerGrad)"/>
+  <text x="50" y="65" fill="#38bdf8" font-size="24" font-weight="900" letter-spacing="2" font-family="'Arial Black', sans-serif">MAP READING: CONTOURS, RELIEF & TERRAIN FEATURES</text>
+  <text x="50" y="95" fill="#94a3b8" font-size="14" font-weight="600" letter-spacing="1">Chapter 3: Recognizing 3D Topographical Features from 2D Elevation Contours</text>
+  <rect x="1100" y="45" width="130" height="32" rx="16" fill="#0f172a" stroke="#0284c7" stroke-width="1.5"/>
+  <text x="1165" y="66" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="1">TACTICAL PLATE</text>
+
+  <!-- Body Content -->
+  
+  <!-- 6 Terrain Grid Cards -->
+  <g transform="translate(45, 130)">
+    <!-- Card 1: SPUR -->
+    <g transform="translate(0, 0)">
+      <rect width="375" height="240" rx="14" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+      <text x="20" y="35" fill="#fbbf24" font-size="16" font-weight="800">1. SPUR (RIDGE EXTENSION)</text>
+      <!-- Spur Contour Drawing -->
+      <path d="M 50,80 Q 180,120 310,80" fill="none" stroke="#d97706" stroke-width="3"/>
+      <path d="M 70,110 Q 180,160 290,110" fill="none" stroke="#d97706" stroke-width="3"/>
+      <path d="M 90,140 Q 180,200 270,140" fill="none" stroke="#d97706" stroke-width="3"/>
+      <text x="180" y="70" fill="#94a3b8" font-size="11" text-anchor="middle">300m</text>
+      <text x="180" y="100" fill="#94a3b8" font-size="11" text-anchor="middle">280m</text>
+      <text x="180" y="130" fill="#94a3b8" font-size="11" text-anchor="middle">260m</text>
+      <path d="M 180,150 L 180,210" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,4"/>
+      <polygon points="180,215 175,200 185,200" fill="#ef4444"/>
+      <text x="20" y="225" fill="#38bdf8" font-size="12" font-weight="600">V-Contours pointing DOWNHILL (Salient)</text>
+    </g>
+
+    <!-- Card 2: VALLEY / RE-ENTRANT -->
+    <g transform="translate(405, 0)">
+      <rect width="375" height="240" rx="14" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+      <text x="20" y="35" fill="#fbbf24" font-size="16" font-weight="800">2. VALLEY / RE-ENTRANT</text>
+      <path d="M 50,190 Q 180,130 310,190" fill="none" stroke="#d97706" stroke-width="3"/>
+      <path d="M 70,160 Q 180,100 290,160" fill="none" stroke="#d97706" stroke-width="3"/>
+      <path d="M 90,130 Q 180,70 270,130" fill="none" stroke="#d97706" stroke-width="3"/>
+      <text x="180" y="195" fill="#94a3b8" font-size="11" text-anchor="middle">200m</text>
+      <text x="180" y="165" fill="#94a3b8" font-size="11" text-anchor="middle">220m</text>
+      <text x="180" y="135" fill="#94a3b8" font-size="11" text-anchor="middle">240m</text>
+      <path d="M 180,65 L 180,120" stroke="#06b6d4" stroke-width="3"/>
+      <text x="20" y="225" fill="#38bdf8" font-size="12" font-weight="600">V-Contours pointing UPHILL (Water flow)</text>
+    </g>
+
+    <!-- Card 3: KNOLL / HILL PEAK -->
+    <g transform="translate(810, 0)">
+      <rect width="375" height="240" rx="14" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+      <text x="20" y="35" fill="#fbbf24" font-size="16" font-weight="800">3. KNOLL / HILL PEAK</text>
+      <ellipse cx="187" cy="130" rx="140" ry="70" fill="none" stroke="#d97706" stroke-width="2.5"/>
+      <ellipse cx="187" cy="130" rx="95" ry="48" fill="none" stroke="#d97706" stroke-width="2.5"/>
+      <ellipse cx="187" cy="130" rx="45" ry="24" fill="none" stroke="#d97706" stroke-width="2.5"/>
+      <circle cx="187" cy="130" r="4" fill="#ef4444"/>
+      <text x="187" y="125" fill="#f87171" font-size="11" font-weight="bold" text-anchor="middle">.412</text>
+      <text x="20" y="225" fill="#38bdf8" font-size="12" font-weight="600">Concentric rings with increasing height inward</text>
+    </g>
+
+    <!-- Card 4: STEEP VS GENTLE SLOPE -->
+    <g transform="translate(0, 260)">
+      <rect width="375" height="240" rx="14" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+      <text x="20" y="35" fill="#fbbf24" font-size="16" font-weight="800">4. STEEP VS GENTLE SLOPE</text>
+      <!-- Steep -->
+      <line x1="40" y1="70" x2="160" y2="70" stroke="#d97706" stroke-width="3"/>
+      <line x1="40" y1="80" x2="160" y2="80" stroke="#d97706" stroke-width="3"/>
+      <line x1="40" y1="90" x2="160" y2="90" stroke="#d97706" stroke-width="3"/>
+      <line x1="40" y1="100" x2="160" y2="100" stroke="#d97706" stroke-width="3"/>
+      <text x="100" y="130" fill="#ef4444" font-size="12" font-weight="bold" text-anchor="middle">STEEP (TIGHT LINES)</text>
+      <!-- Gentle -->
+      <line x1="220" y1="65" x2="340" y2="65" stroke="#d97706" stroke-width="3"/>
+      <line x1="220" y1="105" x2="340" y2="105" stroke="#d97706" stroke-width="3"/>
+      <line x1="220" y1="145" x2="340" y2="145" stroke="#d97706" stroke-width="3"/>
+      <text x="280" y="180" fill="#10b981" font-size="12" font-weight="bold" text-anchor="middle">GENTLE (WIDE SPACING)</text>
+      <text x="20" y="225" fill="#38bdf8" font-size="12" font-weight="600">Close lines = Steep Cliff; Far lines = Flat Plain</text>
+    </g>
+
+    <!-- Card 5: SADDLE / COL -->
+    <g transform="translate(405, 260)">
+      <rect width="375" height="240" rx="14" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+      <text x="20" y="35" fill="#fbbf24" font-size="16" font-weight="800">5. SADDLE / COL (PASS)</text>
+      <ellipse cx="100" cy="120" rx="60" ry="40" fill="none" stroke="#d97706" stroke-width="2"/>
+      <ellipse cx="100" cy="120" rx="30" ry="20" fill="none" stroke="#d97706" stroke-width="2"/>
+      <ellipse cx="275" cy="120" rx="60" ry="40" fill="none" stroke="#d97706" stroke-width="2"/>
+      <ellipse cx="275" cy="120" rx="30" ry="20" fill="none" stroke="#d97706" stroke-width="2"/>
+      <path d="M 187,90 L 187,150" stroke="#38bdf8" stroke-width="2" stroke-dasharray="3,3"/>
+      <text x="187" y="170" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">COL / SADDLE</text>
+      <text x="20" y="225" fill="#38bdf8" font-size="12" font-weight="600">Depression / pass between two mountain peaks</text>
+    </g>
+
+    <!-- Card 6: VERTICAL INTERVAL (VI) & HORIZONTAL EQUIVALENT (HE) -->
+    <g transform="translate(810, 260)">
+      <rect width="375" height="240" rx="14" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+      <text x="20" y="35" fill="#fbbf24" font-size="16" font-weight="800">6. VI &amp; HE GRADIENT FORMULA</text>
+      <rect x="30" y="60" width="315" height="70" rx="10" fill="#020617" stroke="#0ea5e9" stroke-width="1"/>
+      <text x="187" y="90" fill="#38bdf8" font-size="15" font-weight="bold" text-anchor="middle">Gradient = Vertical Interval (VI) / HE</text>
+      <text x="187" y="115" fill="#a5f3fc" font-size="12" text-anchor="middle">VI = Standard 20 meters on 1:50,000 sheet</text>
+      <text x="20" y="170" fill="#94a3b8" font-size="11">● VI is the constant height difference between contours</text>
+      <text x="20" y="190" fill="#94a3b8" font-size="11">● HE is the horizontal distance measured on ground</text>
+      <text x="20" y="225" fill="#38bdf8" font-size="12" font-weight="600">Standard VI = 20m (or 50ft on imperial sheets)</text>
+    </g>
+  </g>
+  
+
+  <!-- Footer -->
+  <line x1="40" y1="675" x2="1240" y2="675" stroke="#1e293b" stroke-width="1"/>
+  <text x="50" y="695" fill="#64748b" font-size="11" font-weight="600" letter-spacing="1">PROJECT PROMETHEUS • NCC ANO TRAINING COMMAND • OFFICIAL INSTRUCTIONAL DOCTRINE</text>
+  <text x="1230" y="695" fill="#64748b" font-size="11" font-weight="600" text-anchor="end" letter-spacing="1">OFFLINE VECTOR ASSET</text>
+</svg>

@@ -1,0 +1,310 @@
+{
+  "system": "Project Prometheus NCC Tactical OS",
+  "version": "2.0.0",
+  "exportDate": "2026-08-24T10:17:43.496Z",
+  "battalion": "1 KAR BN NCC",
+  "officer": "Capt. Rajesh Sharma",
+  "regNo": "ANO/NCC/KA/2018/1042",
+  "data": {
+    "roster": [
+      {
+        "id": "cdt-101",
+        "regNo": "KA/22/SDA/10401",
+        "name": "Amit Kumar",
+        "rank": "Senior Under Officer",
+        "unit": "1 KAR BN NCC",
+        "status": "Active",
+        "phone": "+91 9876543210",
+        "bloodGroup": "B+",
+        "performance": {
+          "HH": 88,
+          "MR": 92,
+          "FCBC": 84,
+          "GA": 90
+        }
+      },
+      {
+        "id": "cdt-102",
+        "regNo": "KA/22/SWA/10402",
+        "name": "Priya Singh",
+        "rank": "Junior Under Officer",
+        "unit": "1 KAR BN NCC",
+        "status": "Active",
+        "phone": "+91 9876543211",
+        "bloodGroup": "O+",
+        "performance": {
+          "HH": 94,
+          "MR": 86,
+          "FCBC": 90,
+          "GA": 95
+        }
+      },
+      {
+        "id": "cdt-103",
+        "regNo": "KA/23/SDA/10403",
+        "name": "Rahul Verma",
+        "rank": "Company Sergeant Major",
+        "unit": "1 KAR BN NCC",
+        "status": "In Camp",
+        "phone": "+91 9876543212",
+        "bloodGroup": "A+",
+        "performance": {
+          "HH": 78,
+          "MR": 82,
+          "FCBC": 76,
+          "GA": 80
+        }
+      },
+      {
+        "id": "cdt-104",
+        "regNo": "KA/23/SWA/10404",
+        "name": "Sneha Patil",
+        "rank": "Sergeant",
+        "unit": "1 KAR BN NCC",
+        "status": "Active",
+        "phone": "+91 9876543213",
+        "bloodGroup": "AB+",
+        "performance": {
+          "HH": 90,
+          "MR": 75,
+          "FCBC": 82,
+          "GA": 88
+        }
+      },
+      {
+        "id": "cdt-105",
+        "regNo": "KA/24/SDA/10405",
+        "name": "Mohammed Tariq",
+        "rank": "Cadet",
+        "unit": "1 KAR BN NCC",
+        "status": "New Joinee",
+        "phone": "+91 9876543214",
+        "bloodGroup": "O-",
+        "performance": {
+          "HH": 65,
+          "MR": 70,
+          "FCBC": 60,
+          "GA": 72
+        }
+      },
+      {
+        "id": "cdt-106",
+        "regNo": "KA/21/SDA/10406",
+        "name": "Vikram Joshi",
+        "rank": "Cadet",
+        "unit": "1 KAR BN NCC",
+        "status": "Dropout",
+        "phone": "+91 9876543215",
+        "bloodGroup": "B-",
+        "performance": {
+          "HH": 40,
+          "MR": 45,
+          "FCBC": 50,
+          "GA": 42
+        }
+      }
+    ],
+    "finance": [
+      {
+        "id": "fin-01",
+        "date": "2026-08-10",
+        "category": "Training Aids",
+        "description": "Prismatic Service Compasses (Qty 4) & Survey Maps",
+        "amount": 8400,
+        "createdBy": "Capt. Rajesh Sharma"
+      },
+      {
+        "id": "fin-02",
+        "date": "2026-08-15",
+        "category": "Ration/Refreshment",
+        "description": "Independence Day Parade Refreshments for 50 Cadets",
+        "amount": 6250,
+        "createdBy": "Capt. Rajesh Sharma"
+      },
+      {
+        "id": "fin-03",
+        "date": "2026-08-18",
+        "category": "Uniform/Equipment",
+        "description": "NCC Berets, Hackles, and Badges procurement",
+        "amount": 14200,
+        "createdBy": "Capt. Rajesh Sharma"
+      },
+      {
+        "id": "fin-04",
+        "date": "2026-08-21",
+        "category": "Camp Transport",
+        "description": "Combined Annual Training Camp (CATC) Bus Advance",
+        "amount": 18500,
+        "createdBy": "Capt. Rajesh Sharma"
+      }
+    ],
+    "documents": [
+      {
+        "id": "doc-enr-01",
+        "title": "Form I - Senior Division Enrollment Applications",
+        "category": "Enrollment",
+        "code": "NCC/ENR/01",
+        "priority": "Mandatory",
+        "status": "Verified & On File",
+        "cadetCount": 160,
+        "deadline": "31 Aug (Annual)",
+        "notes": "Signed counterfoils for 160 SD/SW cadets with Aadhaar & College ID verification.",
+        "fileName": "sd_enrollment_forms_2026.pdf",
+        "fileSize": 4200000,
+        "lastUpdated": "2026-08-15"
+      },
+      {
+        "id": "doc-enr-02",
+        "title": "Form II - Parent/Guardian Consent & Indemnity",
+        "category": "Enrollment",
+        "code": "NCC/ENR/02",
+        "priority": "Mandatory",
+        "status": "Verified & On File",
+        "cadetCount": 160,
+        "deadline": "31 Aug (Annual)",
+        "notes": "Signed parental declarations acknowledging military physical drill & camp training.",
+        "fileName": "parent_consent_declarations.pdf",
+        "fileSize": 3100000,
+        "lastUpdated": "2026-08-15"
+      },
+      {
+        "id": "doc-med-03",
+        "title": "Form III - Medical Fitness & Blood Group Certification",
+        "category": "Medical",
+        "code": "NCC/MED/03",
+        "priority": "Mandatory",
+        "status": "Verified & On File",
+        "cadetCount": 160,
+        "deadline": "05 Sep (Annual)",
+        "notes": "Certified fitness certificates from Regimental Medical Officer (RMO) / Govt Surgeon.",
+        "fileName": "medical_fitness_master_2026.pdf",
+        "fileSize": 2800000,
+        "lastUpdated": "2026-08-18"
+      },
+      {
+        "id": "doc-cmp-04",
+        "title": "Combined Annual Training Camp (CATC) Nominal Roll",
+        "category": "Camps",
+        "code": "NCC/CMP/04",
+        "priority": "High Priority",
+        "status": "Awaiting CO Approval",
+        "cadetCount": 45,
+        "deadline": "15 Oct (Pre-Camp)",
+        "notes": "Nominal roll of 45 detailed cadets with mess, kit, and weapon allotment for CATC-II.",
+        "fileName": "catc_ii_nominal_roll_45cdt.xlsx",
+        "fileSize": 145000,
+        "lastUpdated": "2026-08-20"
+      },
+      {
+        "id": "doc-cmp-05",
+        "title": "Camp Risk Clearance Indemnity Bonds",
+        "category": "Camps",
+        "code": "NCC/CMP/05",
+        "priority": "Mandatory",
+        "status": "Pending ANO Signature",
+        "cadetCount": 45,
+        "deadline": "18 Oct (Pre-Camp)",
+        "notes": "Individual risk indemnity bonds for obstacle training & night range firing.",
+        "fileName": "camp_indemnity_bonds_bundle.pdf",
+        "fileSize": 5600000,
+        "lastUpdated": "2026-08-22"
+      },
+      {
+        "id": "doc-rng-06",
+        "title": "Range Safety Protocol & Ammunition Expended Certificate",
+        "category": "Firing & Armory",
+        "code": "NCC/RNG/06",
+        "priority": "Statutory",
+        "status": "Verified & On File",
+        "cadetCount": 80,
+        "deadline": "Within 48h of Firing",
+        "notes": ".22 Deluxe Rifle (800 rounds) & 7.62mm SLR range firing return countersigned by Range Officer.",
+        "fileName": "ammo_expended_voucher_2026.pdf",
+        "fileSize": 1950000,
+        "lastUpdated": "2026-08-10"
+      },
+      {
+        "id": "doc-exm-07",
+        "title": "'B' Certificate Examination Eligibility Master List",
+        "category": "Certificates",
+        "code": "NCC/EXM/07",
+        "priority": "High Priority",
+        "status": "Verified & On File",
+        "cadetCount": 52,
+        "deadline": "10 Dec (Annual)",
+        "notes": "52 2nd Year Cadets with min 75% parade attendance and 1 mandatory camp completed.",
+        "fileName": "b_cert_eligibility_roster.pdf",
+        "fileSize": 1200000,
+        "lastUpdated": "2026-08-21"
+      },
+      {
+        "id": "doc-exm-08",
+        "title": "'C' Certificate Exam Nomination & Service Record",
+        "category": "Certificates",
+        "code": "NCC/EXM/08",
+        "priority": "High Priority",
+        "status": "Awaiting CO Approval",
+        "cadetCount": 28,
+        "deadline": "15 Jan (Annual)",
+        "notes": "28 3rd Year Cadets with B cert pass and 2 camps completed.",
+        "fileName": "c_cert_nomination_master.pdf",
+        "fileSize": 2400000,
+        "lastUpdated": "2026-08-21"
+      },
+      {
+        "id": "doc-fin-09",
+        "title": "Cadet Refreshment Allowance Voucher & Acquittance Roll",
+        "category": "Finance",
+        "code": "NCC/FIN/09",
+        "priority": "Mandatory",
+        "status": "Verified & On File",
+        "cadetCount": 160,
+        "deadline": "Monthly",
+        "notes": "Acquittance roll with biometric & counter signatures for parade refreshments.",
+        "fileName": "refreshment_acquittance_aug2026.pdf",
+        "fileSize": 3400000,
+        "lastUpdated": "2026-08-23"
+      },
+      {
+        "id": "doc-str-10",
+        "title": "Uniform & Equipment Issue Voucher (IV/RV) Register",
+        "category": "Stores",
+        "code": "NCC/STR/10",
+        "priority": "Regular",
+        "status": "Verified & On File",
+        "cadetCount": 160,
+        "deadline": "Quarterly",
+        "notes": "Issue vouchers for Berets, DMS Boots, Web Belts, Khaki Drill Uniforms.",
+        "fileName": "uniform_stores_issue_ledger.pdf",
+        "fileSize": 4100000,
+        "lastUpdated": "2026-08-12"
+      }
+    ],
+    "progress": [
+      {
+        "subjectKey": "HH",
+        "percentage": 24,
+        "attemptsCount": 6,
+        "lastAttemptDate": "2026-08-20"
+      },
+      {
+        "subjectKey": "MR",
+        "percentage": 40,
+        "attemptsCount": 10,
+        "lastAttemptDate": "2026-08-22"
+      },
+      {
+        "subjectKey": "FCBC",
+        "percentage": 16,
+        "attemptsCount": 4,
+        "lastAttemptDate": "2026-08-18"
+      },
+      {
+        "subjectKey": "GA",
+        "percentage": 32,
+        "attemptsCount": 8,
+        "lastAttemptDate": "2026-08-23"
+      }
+    ]
+  }
+}

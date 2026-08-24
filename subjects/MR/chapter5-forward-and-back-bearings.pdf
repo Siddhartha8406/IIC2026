@@ -1,0 +1,83 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 1268 >>
+stream
+BT
+/F1 11 Tf
+14 TL
+40 760 Td
+/F2 14 Tf (Title: FORWARD AND BACK BEARINGS AND COMPASS CONVERSIONS) Tj
+/F1 10 Tf
+T*
+(National Cadet Corps \(NCC\) — Official Directorate General Training Notes) Tj
+T*
+(--------------------------------------------------------------------------------) Tj
+T*
+() Tj
+T*
+(1. FORWARD BEARING \(FB\): The direct bearing measured from the observer's) Tj
+T*
+(position towards an observed target object or navigational waypoint.) Tj
+T*
+() Tj
+T*
+(2. BACK BEARING \(BB\): The reciprocal bearing looking back from the target) Tj
+T*
+(object toward the observer. Crucial for confirming navigation lines and) Tj
+T*
+(executing re-section.) Tj
+T*
+() Tj
+T*
+(3. THE GOLDEN BACK BEARING MATHEMATICAL RULE: If the Forward Bearing is) Tj
+T*
+(less than 180°, add 180°: BB = FB + 180°. \(Example: If FB is 045°, then BB) Tj
+T*
+(= 045° + 180° = 225°\). If the Forward Bearing is greater than 180°,) Tj
+T*
+(subtract 180°: BB = FB - 180°. \(Example: If FB is 270°, then BB = 270° -) Tj
+T*
+(180° = 090°\).) Tj
+T*
+() Tj
+T*
+(4. INDIVIDUAL ERROR & PRISM CORRECTION: Before measuring bearings, cadets) Tj
+T*
+(must check compass individual error against a surveyed base line and adjust) Tj
+T*
+(observed magnetic bearings to grid bearings.) Tj
+T*
+() Tj
+T*
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000001571 00000 n 
+0000001641 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+1716
+%%EOF

@@ -1,0 +1,87 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 1406 >>
+stream
+BT
+/F1 11 Tf
+14 TL
+40 760 Td
+/F2 14 Tf (Title: SERVICE PRISMATIC COMPASS AND TYPES OF BEARINGS) Tj
+/F1 10 Tf
+T*
+(National Cadet Corps \(NCC\) — Official Directorate General Training Notes) Tj
+T*
+(--------------------------------------------------------------------------------) Tj
+T*
+() Tj
+T*
+(1. THE SERVICE PRISMATIC COMPASS MARK III A: The primary handheld) Tj
+T*
+(navigational instrument of the Indian Armed Forces. Key components include) Tj
+T*
+(the Magnetic Needle, Liquid-filled Dial \(graduated 0° to 360° clockwise\),) Tj
+T*
+(Glass Window with Hair Line, Magnifying Prism, Thumb Ring, and Clamping) Tj
+T*
+(Screw.) Tj
+T*
+() Tj
+T*
+(2. DEFINITION OF A BEARING: A Bearing is the clockwise horizontal angular) Tj
+T*
+(measurement taken from a fixed zero reference North direction to a target) Tj
+T*
+(object, expressed in degrees from 000° to 360° with 3-digit notation.) Tj
+T*
+() Tj
+T*
+(3. THE THREE TYPES OF NORTH: 1. True North \(TN\): Direction of the) Tj
+T*
+(geographic North Pole; 2. Grid North \(GN\): Direction of vertical Easting) Tj
+T*
+(grid lines on the map; 3. Magnetic North \(MN\): Direction indicated by the) Tj
+T*
+(compass needle pointing to the Earth's Magnetic North Pole.) Tj
+T*
+() Tj
+T*
+(4. MAGNETIC VARIATION \(DECLINATION\): The angular difference between True) Tj
+T*
+(North and Magnetic North, varying annually based on planetary geomagnetic) Tj
+T*
+(drift.) Tj
+T*
+() Tj
+T*
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000001709 00000 n 
+0000001779 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+1854
+%%EOF

@@ -1,0 +1,34 @@
+[
+  {
+    "id": "fin-01",
+    "date": "2026-08-10",
+    "category": "Training Aids",
+    "description": "Prismatic Service Compasses (Qty 4) & Survey Maps",
+    "amount": 8400,
+    "createdBy": "Capt. Rajesh Sharma"
+  },
+  {
+    "id": "fin-02",
+    "date": "2026-08-15",
+    "category": "Ration/Refreshment",
+    "description": "Independence Day Parade Refreshments for 50 Cadets",
+    "amount": 6250,
+    "createdBy": "Capt. Rajesh Sharma"
+  },
+  {
+    "id": "fin-03",
+    "date": "2026-08-18",
+    "category": "Uniform/Equipment",
+    "description": "NCC Berets, Hackles, and Badges procurement",
+    "amount": 14200,
+    "createdBy": "Capt. Rajesh Sharma"
+  },
+  {
+    "id": "fin-04",
+    "date": "2026-08-21",
+    "category": "Camp Transport",
+    "description": "Combined Annual Training Camp (CATC) Bus Advance",
+    "amount": 18500,
+    "createdBy": "Capt. Rajesh Sharma"
+  }
+]

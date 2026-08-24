@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" style="background:#0a0f18; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.2"/>
+      <stop offset="50%" stop-color="#3b82f6" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.6"/>
+    </pattern>
+  </defs>
+
+  <!-- Background Grid -->
+  <rect width="1280" height="720" fill="#060b13"/>
+  <rect width="1280" height="720" fill="url(#grid)"/>
+
+  <!-- Border Frame -->
+  <rect x="20" y="20" width="1240" height="680" rx="20" fill="none" stroke="#1e293b" stroke-width="2"/>
+  <rect x="24" y="24" width="1232" height="672" rx="16" fill="none" stroke="#0ea5e9" stroke-width="1" stroke-opacity="0.2"/>
+
+  <!-- Header Banner -->
+  <rect x="24" y="24" width="1232" height="90" rx="16" fill="url(#headerGrad)"/>
+  <text x="50" y="65" fill="#38bdf8" font-size="24" font-weight="900" letter-spacing="2" font-family="'Arial Black', sans-serif">MAP READING: NIGHT NAVIGATION & NIGHT MARCH CHART</text>
+  <text x="50" y="95" fill="#94a3b8" font-size="14" font-weight="600" letter-spacing="1">Chapter 6: Night March Chart Layout, Pace Counting and Celestial North Finding</text>
+  <rect x="1100" y="45" width="130" height="32" rx="16" fill="#0f172a" stroke="#0284c7" stroke-width="1.5"/>
+  <text x="1165" y="66" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="1">TACTICAL PLATE</text>
+
+  <!-- Body Content -->
+  
+  <g transform="translate(50, 130)">
+    <!-- Left: Night March Table (700px) -->
+    <rect width="700" height="510" rx="16" fill="#020617" stroke="#334155" stroke-width="1.5"/>
+    <text x="30" y="40" fill="#38bdf8" font-size="18" font-weight="800">STANDARD NIGHT MARCH CHART (NMC)</text>
+
+    <!-- Table Header -->
+    <rect x="25" y="60" width="650" height="35" rx="8" fill="#1e293b"/>
+    <text x="40" y="83" fill="#38bdf8" font-size="12" font-weight="bold">LEG</text>
+    <text x="90" y="83" fill="#38bdf8" font-size="12" font-weight="bold">START POINT</text>
+    <text x="210" y="83" fill="#38bdf8" font-size="12" font-weight="bold">CHECK POINT</text>
+    <text x="340" y="83" fill="#38bdf8" font-size="12" font-weight="bold">MAG BEARING</text>
+    <text x="460" y="83" fill="#38bdf8" font-size="12" font-weight="bold">DIST (PACED)</text>
+    <text x="570" y="83" fill="#38bdf8" font-size="12" font-weight="bold">REMARKS</text>
+
+    <!-- Row 1 -->
+    <rect x="25" y="105" width="650" height="40" rx="6" fill="#0f172a"/>
+    <text x="40" y="130" fill="#f1f5f9" font-size="12">1</text>
+    <text x="90" y="130" fill="#f1f5f9" font-size="12">Start Line (SL)</text>
+    <text x="210" y="130" fill="#f1f5f9" font-size="12">Track Junction</text>
+    <text x="340" y="130" fill="#fbbf24" font-size="12" font-weight="bold">045°</text>
+    <text x="460" y="130" fill="#34d399" font-size="12">360 paces (300m)</text>
+    <text x="570" y="130" fill="#94a3b8" font-size="11">Prominent Banyan</text>
+
+    <!-- Row 2 -->
+    <rect x="25" y="155" width="650" height="40" rx="6" fill="#020617"/>
+    <text x="40" y="180" fill="#f1f5f9" font-size="12">2</text>
+    <text x="90" y="180" fill="#f1f5f9" font-size="12">Track Junction</text>
+    <text x="210" y="180" fill="#f1f5f9" font-size="12">Dry Nullah Bend</text>
+    <text x="340" y="180" fill="#fbbf24" font-size="12" font-weight="bold">090°</text>
+    <text x="460" y="180" fill="#34d399" font-size="12">600 paces (500m)</text>
+    <text x="570" y="180" fill="#94a3b8" font-size="11">Sandy bed / silence</text>
+
+    <!-- Row 3 -->
+    <rect x="25" y="205" width="650" height="40" rx="6" fill="#0f172a"/>
+    <text x="40" y="230" fill="#f1f5f9" font-size="12">3</text>
+    <text x="90" y="230" fill="#f1f5f9" font-size="12">Dry Nullah Bend</text>
+    <text x="210" y="230" fill="#f1f5f9" font-size="12">Target Ridge (FUP)</text>
+    <text x="340" y="230" fill="#fbbf24" font-size="12" font-weight="bold">015°</text>
+    <text x="460" y="230" fill="#34d399" font-size="12">240 paces (200m)</text>
+    <text x="570" y="230" fill="#94a3b8" font-size="11">Formup Place</text>
+
+    <!-- Tactical Pace Rules -->
+    <rect x="25" y="270" width="650" height="215" rx="12" fill="#0f172a" stroke="#0ea5e9" stroke-width="1"/>
+    <text x="45" y="300" fill="#38bdf8" font-size="14" font-weight="bold">NIGHT PACE COUNTING RULES &amp; CORRECTIONS:</text>
+    <text x="45" y="330" fill="#cbd5e1" font-size="12">● <strong style="fill:#fbbf24;">Day Standard:</strong> 120 double paces = 100 meters (flat open ground).</text>
+    <text x="45" y="360" fill="#cbd5e1" font-size="12">● <strong style="fill:#fbbf24;">Night Adjustment:</strong> Paces become shorter in darkness; count <strong style="fill:#34d399;">130–135 double paces per 100m</strong>.</text>
+    <text x="45" y="390" fill="#cbd5e1" font-size="12">● <strong style="fill:#fbbf24;">Uphill / Dense Brush:</strong> Add +15% to +20% extra paces.</text>
+    <text x="45" y="420" fill="#cbd5e1" font-size="12">● <strong style="fill:#fbbf24;">Pace Counter Duty:</strong> Assign two independent cadets with pebble cords (1 knot = 100m).</text>
+    <text x="45" y="455" fill="#f43f5e" font-size="12" font-weight="bold">CRITICAL: No white light permitted. Use red-filtered lens or luminous tritium marks.</text>
+
+    <!-- Right: Celestial North Finding (450px) -->
+    <g transform="translate(730, 0)">
+      <rect width="450" height="510" rx="16" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+      <text x="30" y="40" fill="#38bdf8" font-size="18" font-weight="800">FINDING NORTH VIA POLE STAR</text>
+
+      <!-- Night Sky Constellation Box -->
+      <rect x="25" y="60" width="400" height="260" rx="12" fill="#020617" stroke="#1e293b" stroke-width="1"/>
+      
+      <!-- Great Bear (Ursa Major / Saptarishi) 7 Stars -->
+      <circle cx="80" cy="220" r="4" fill="#ffffff"/>
+      <circle cx="120" cy="200" r="4" fill="#ffffff"/>
+      <circle cx="160" cy="210" r="4" fill="#ffffff"/>
+      <circle cx="190" cy="250" r="4" fill="#ffffff"/>
+      <circle cx="230" cy="240" r="4" fill="#ffffff"/>
+      <!-- Pointer Stars (Merak & Dubhe) -->
+      <circle cx="280" cy="230" r="6" fill="#38bdf8"/>
+      <circle cx="270" cy="170" r="6" fill="#38bdf8"/>
+      <line x1="280" y1="230" x2="270" y2="170" stroke="#38bdf8" stroke-width="2"/>
+      <text x="290" y="200" fill="#38bdf8" font-size="11" font-weight="bold">POINTERS</text>
+
+      <!-- Ray to Polaris -->
+      <line x1="270" y1="170" x2="240" y2="90" stroke="#fbbf24" stroke-width="2" stroke-dasharray="4,4"/>
+      <!-- Pole Star (Polaris) -->
+      <circle cx="240" cy="90" r="9" fill="#fef08a" stroke="#f59e0b" stroke-width="3"/>
+      <text x="260" y="95" fill="#fef08a" font-size="14" font-weight="900">POLE STAR (POLARIS)</text>
+      <text x="260" y="115" fill="#34d399" font-size="12" font-weight="bold">TRUE NORTH (000° TN)</text>
+
+      <text x="35" y="345" fill="#cbd5e1" font-size="13" font-weight="bold">HOW TO FIND POLARIS:</text>
+      <text x="35" y="375" fill="#94a3b8" font-size="12">1. Locate Ursa Major (Saptarishi) 7-star saucepan shape.</text>
+      <text x="35" y="405" fill="#94a3b8" font-size="12">2. Find the two outer Pointer Stars (Merak &amp; Dubhe).</text>
+      <text x="35" y="435" fill="#94a3b8" font-size="12">3. Extend a straight line through pointers <strong style="fill:#fbbf24;">5 times their distance</strong>.</text>
+      <text x="35" y="465" fill="#34d399" font-size="12" font-weight="bold">4. The distinct bright star is Polaris pointing to True North.</text>
+    </g>
+  </g>
+  
+
+  <!-- Footer -->
+  <line x1="40" y1="675" x2="1240" y2="675" stroke="#1e293b" stroke-width="1"/>
+  <text x="50" y="695" fill="#64748b" font-size="11" font-weight="600" letter-spacing="1">PROJECT PROMETHEUS • NCC ANO TRAINING COMMAND • OFFICIAL INSTRUCTIONAL DOCTRINE</text>
+  <text x="1230" y="695" fill="#64748b" font-size="11" font-weight="600" text-anchor="end" letter-spacing="1">OFFLINE VECTOR ASSET</text>
+</svg>
